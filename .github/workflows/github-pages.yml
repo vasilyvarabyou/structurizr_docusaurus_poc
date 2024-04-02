@@ -32,7 +32,7 @@ jobs:
         with:
           image: structurizr/cli:latest
           options: -v ${{ github.workspace }}:/var/www
-          run: '/usr/local/structurizr-cli/structurizr.sh export -w /var/www/model/workspace.dsl -f plantuml/c4plantuml -o /var/www/target/puml'
+          run: '/usr/local/structurizr-cli/structurizr.sh export -w /var/www/model/workspace.dsl -f plantuml/c4plantuml -o /var/www/model/.generated'
 
       # Prepare SVG diagrams in website/static/diagrams
       - name: Render PlantUML diagrams
@@ -47,6 +47,7 @@ jobs:
         with:
           node-version: 18
           cache: npm
+          working-directory: ./website
       - name: Install dependencies
         run: npm ci
         working-directory: ./website
