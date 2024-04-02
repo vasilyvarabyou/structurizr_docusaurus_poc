@@ -40,7 +40,7 @@ jobs:
         with:
           image: plantuml/plantuml:latest
           options: -v ${{ github.workspace }}:/var/www
-          run: java -jar /opt/plantuml.jar-svg -o /var/www/website/static/diagrams /var/www/model/.generated
+          run: java -jar /opt/plantuml.jar -svg -o /var/www/website/static/diagrams /var/www/model/.generated
 
       # Build docusaurus website
       - uses: actions/setup-node@v4
